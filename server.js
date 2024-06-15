@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const authRoutes = require('./routes/auth');
 const scheduleRoutes = require('./routes/schedule')
+const dashboardRoutes = require('./routes/dashboard')
 
 dotenv.config();
 
@@ -69,6 +70,7 @@ app.get('/login', (req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/schedule', scheduleRoutes);
+app.use('/auth', dashboardRoutes);
 
 // Halaman utama
 app.get('/', (req, res) => {

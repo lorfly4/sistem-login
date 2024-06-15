@@ -11,6 +11,7 @@ let users = JSON.parse(fs.readFileSync(usersPath, 'utf8')).users;
 router.post('/login', (req, res) => {
   const { name, password } = req.body;
   const user = users.find(u => u.username === name && u.password === password);
+  res.redirect('/auth/dashboard')
   
   if (user) {
     res.json({ message: 'Login successful', user });
