@@ -1,0 +1,52 @@
+body {
+  background: #8DB051 url('hospital.jpeg') no-repeat center center fixed;
+  background-color:rgb(255, 234, 115);
+  background-size: cover;
+  color: #eaeaea;
+  }
+  
+  .app {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #333; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+  color: #eaeaea;
+  text-align: center;
+  }
+  
+  form {
+  margin-bottom: 20px;
+  }
+  
+  table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  }
+  
+  th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  }
+  
+  th {
+  background-color: #007bff;
+  color: #fff;
+  }
+  
+  .button{
+  border-radius: 5px;
+  background-color: orangered;
+  color: aliceblue;
+  }
+  
+  span a{
+      color: #fff;
+      text-decoration: none;
+  }
