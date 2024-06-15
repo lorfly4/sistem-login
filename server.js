@@ -63,6 +63,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.get('/login', (req, res) => {
+  res.render('login'); // Gantilah 'login' dengan nama file atau template yang sesuai
+});
 
 app.use('/auth', authRoutes);
 app.use('/schedule', scheduleRoutes);

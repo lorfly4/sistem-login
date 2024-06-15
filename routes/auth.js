@@ -1,37 +1,22 @@
 const express = require('express');
-const connection = require('../db');
+const fs = require('fs');
+const path = require('path');
 const router = express.Router();
-const dotenv = require('dotenv');
 
-dotenv.config();
+// Baca data pengguna dari file JSON
+const usersPath = path.join(__dirname, '../users.json');
+let users = JSON.parse(fs.readFileSync(usersPath, 'utf8')).users;
 
-// Halaman login
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-// Login route
+// Endpoint untuk login
 router.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  // Validasi user gus
-  connection.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (err, results) => {
-    if (err) {
-      return res.status(500).json({ error: err });
-    }
-    if (results.length === 0) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // berhasil login lompat ke dashboard
-    res.redirect('/auth/dashboard');
-  });
-});
-
-// Dashboard route
-router.get('/dashboard', (req, res) => {
-  // Render dashboard
-  res.render('dashboard');
+  const { name, password } = req.body;
+  const user = users.find(u => u.username === name && u.password === password);
+  
+  if (user) {
+    res.json({ message: 'Login successful', user });
+  } else {
+    res.status(401).json({ message: 'Invalid credentials' });
+  }
 });
 
 module.exports = router;
